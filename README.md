@@ -74,8 +74,8 @@ Drag the avatar root GameObject (a scene object, not a prefab asset) into the **
 
 The tool walks the source animator and groups discovered parameters into the four foldouts described in [What it does](#what-it-does). Each row shows the parameter name, a per-item summary (curve and activation counts), and any warnings about unresolved targets.
 
-![Discovery results, with parameters categorised into foldouts](docs/images/04-discovery-results.png)
-<!-- IMAGE NEEDED: Migration window after clicking Discover items. Show all four category foldouts populated — Material Properties, GameObject / Component Toggles, Mixed, Skipped. Some items should be ticked (no warnings) and some unticked with warnings displayed inline. The window should reflect a real avatar with realistic counts. -->
+<img width="1065" height="909" alt="image" src="https://github.com/user-attachments/assets/0322b524-354a-4814-b230-b0f8e76ba809" />
+
 
 ### Step 4 — Resolve mismatches *(if any)*
 
