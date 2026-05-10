@@ -6,7 +6,7 @@ The repo distributes a single Unity package, `net.towneh.editor.vixxymigration`,
 
 ## What it does
 
-Walks a source `AnimatorController`, identifies the `AnimationClip`s gated by each parameter, and authors a matching `HVRVixxyControl` + `HVRVixxyMenuItem` pair per parameter on your Basis avatar. Categorises items by what they actuate:
+Scans a `AnimatorController`, identifies the `AnimationClip`s gated by each parameter, and authors a matching `HVRVixxyControl` + `HVRVixxyMenuItem` pair per parameter on your Basis avatar. Categorises items by what they actuate:
 
 - **Material Properties** — items whose curves only write to material properties (UDIM tile discard, hue shifts, brightness, etc.)
 - **GameObject / Component Toggles** — items whose curves only toggle `m_Enabled` on components or `m_IsActive` on GameObjects
@@ -46,20 +46,20 @@ Or, for local development, add a `file:` reference to your project's `Packages/m
 
 Before running the tool, lock all Poiyomi materials on your avatar. The tool emits property names in Poi's "Rename Animated" suffixed form (e.g. `_UDIMDiscardRow0_0_Jacket`), which only resolve on locked materials. If you skip this, the tool will still run, but writes to those properties will silently no-op at runtime.
 
-![Lock Poiyomi materials before running the tool](docs/images/00-lock-poi-materials.png)
-<!-- IMAGE NEEDED: A Poiyomi material in the Inspector with the "Lock for Optimization" / lock button highlighted. Capture the material panel zoomed in enough that the lock button is clearly readable. -->
+<img width="485" height="160" alt="image" src="https://github.com/user-attachments/assets/8f001803-7edd-4d2e-8125-b3673138f7be" />
+
 
 ### Step 1 — Open the migration window
 
 Open **Tools ▸ Vixxy Animator Migration Utility** in Unity's menu bar.
 
-![Open the migration window from the Tools menu](docs/images/01-open-window.png)
-<!-- IMAGE NEEDED: Unity menu bar opened to Tools, with "Vixxy Animator Migration Utility" highlighted in the dropdown. Crop tightly to the menu region. -->
+<img width="281" height="107" alt="image" src="https://github.com/user-attachments/assets/8c358db5-b240-43e0-b787-26574b07a10d" />
+
 
 The window opens with all fields blank, ready to receive an avatar.
 
-![Empty migration window, ready for input](docs/images/02-empty-window.png)
-<!-- IMAGE NEEDED: The migration window after first opening — Avatar Root, Source Animator, Place Under, Container Name fields all empty (or showing defaults), Discover items button visible. Window only, no other Unity panels. -->
+<img width="1065" height="793" alt="image" src="https://github.com/user-attachments/assets/78e6e262-dbf3-4537-9dce-828c3fdd3724" />
+
 
 ### Step 2 — Drop your avatar in
 
@@ -67,8 +67,8 @@ Drag the avatar root GameObject (a scene object, not a prefab asset) into the **
 
 **Place Under** defaults to the avatar root — this is the parent transform the migrated controls will be placed beneath. **Container Name** defaults to `HVR.Vixxy` — the GameObject that'll hold all migrated controls.
 
-![Migration window with avatar dropped in and source animator auto-resolved](docs/images/03-avatar-dropped.png)
-<!-- IMAGE NEEDED: Migration window with the Avatar Root field populated, Source Animator showing the auto-resolved controller, Place Under set to the avatar transform, Container Name showing "HVR.Vixxy". The reminder HelpBox about locking Poi materials should be visible. -->
+<img width="758" height="294" alt="{A98C2FA4-7063-488C-9533-8600FC387682}" src="https://github.com/user-attachments/assets/7648fb89-38c3-42de-9036-031e923a60c9" />
+
 
 ### Step 3 — Click **Discover items**
 
@@ -85,8 +85,8 @@ If your avatar has been renamed since the source animator was authored, the tool
 
 If the source animator references a GameObject path that doesn't exist on your avatar (e.g. the body mesh was renamed from `CHaracter` to `Body`), each unresolved path appears as a row with a Transform field. Drop the replacement Transform from your Hierarchy onto the field; targets re-resolve in place. Longest-prefix substitution rewrites nested paths automatically — one entry for `CHaracter` fixes `CHaracter`, `CHaracter/SubMesh`, etc.
 
-![Path Remappings: drop replacement Transforms onto rows where the source path doesn't exist on the avatar](docs/images/05-path-remappings.png)
-<!-- IMAGE NEEDED: Path Remappings foldout expanded with one or two unresolved paths visible. Show one row mid-drag with a Transform being dropped from the Hierarchy panel. If possible, also show one row in the "Applied" subsection underneath, with its Clear button visible. -->
+<img width="1065" height="263" alt="{11D51960-D55A-4DE2-8D79-A77DC2D6ABA1}" src="https://github.com/user-attachments/assets/51f57207-0233-47de-8ca0-3e2afa50ae55" />
+
 
 #### Material Suffix Remappings — for renamed Poiyomi materials *(Poi only)*
 
@@ -94,15 +94,15 @@ If a Poiyomi material's lock-rename suffix doesn't match the source (e.g. source
 
 This section appears only when at least one of your avatar's renderers uses a Poiyomi shader. The tool also tries StringTagMap auto-resolve before asking you: if there's exactly one matching candidate property under the source's base name, it auto-applies and surfaces the decision in the per-item warning.
 
-![Material Suffix Remappings: drop the actual material; the tool finds the right property name](docs/images/06-material-suffix-remappings.png)
-<!-- IMAGE NEEDED: Material Suffix Remappings foldout expanded with one or two unresolved suffix rows. Show a Material being dropped onto a row from the Project panel. Also show one row in the "Applied" subsection with its source-suffix → Material.name displayed. -->
+<img width="1056" height="114" alt="{D049FB61-B659-4A49-9F2C-FB2800C6CBAC}" src="https://github.com/user-attachments/assets/57f1bc0a-00f2-490b-aaa6-903676c5627a" />
+
 
 #### Property Remappings — for property names that don't fit the suffix pattern
 
 If the source name is flat (no suffix to strip — e.g. source `_HueShift` but your shader has `_MainHueShift`), type the actual target property name into the text field. Use this for any unresolved property that doesn't fit the Poi suffix-rename pattern, including all unresolved properties on non-Poiyomi shaders.
 
-![Property Remappings: type the actual property name as it appears on the locked material](docs/images/07-property-remappings.png)
-<!-- IMAGE NEEDED: Property Remappings foldout expanded with one row visible — source property name on the left, target text field on the right being typed into. Capture the cursor active in the text field if possible. -->
+<img width="1064" height="122" alt="{E8D1D6C2-F42A-48CE-9398-BE267A3EE8FF}" src="https://github.com/user-attachments/assets/323e0f70-0d7a-48c4-9c23-10eff5a2e282" />
+
 
 After every change in any remap section, the tool re-resolves and surfaces the result in each item's warning list. Items that resolve drop their warnings; items that still don't resolve get an updated warning telling you which UI to look at next.
 
@@ -110,15 +110,15 @@ After every change in any remap section, the tool re-resolves and surfaces the r
 
 Each category has **All** and **None** bulk-select buttons. Items without warnings are pre-ticked by default; items with warnings start unticked so you can decide whether to migrate them anyway.
 
-![Tick the items you want to migrate; All/None buttons help with bulk selection](docs/images/08-selection.png)
-<!-- IMAGE NEEDED: Discovery list with most items ticked and the per-category All/None buttons visible. Show at least one item with the cursor hovering over its checkbox to indicate interaction. Selected count near the bottom should be visible. -->
+<img width="1064" height="294" alt="{52FCF700-8294-4A3C-AEEA-8341D15B1A5C}" src="https://github.com/user-attachments/assets/3a16a319-d5a7-4ae6-85fe-3f8b6c2cb315" />
+
 
 ### Step 6 — Dry-run preview *(optional)*
 
 Click **Dry-run preview** to log the planned writes to the Console without modifying the scene. Each migrated parameter is listed with the curves and activations it would write, the GameObject path it'd land at, and the off/on values it'd use.
 
-![Dry-run output in the Console, showing every planned write before any scene modification](docs/images/09-dry-run-console.png)
-<!-- IMAGE NEEDED: Unity Console panel showing the [Vixxy Animator Migration] dry-run log entry expanded. The entry should be a multi-line log with parameter names, curve paths, and off/on values visible. Capture enough lines that the structure is obvious. -->
+<img width="435" height="357" alt="{A2CEEC93-D27B-44FE-974B-13BC3B142FFA}" src="https://github.com/user-attachments/assets/f2fbcbf5-283e-401c-a12a-c4f694e75d9d" />
+
 
 ### Step 7 — Apply
 
@@ -126,8 +126,8 @@ Click **Apply selected**. The tool creates the container GameObject (default `HV
 
 A status line below the buttons confirms the count. Single **Ctrl+Z** reverses the entire migration.
 
-![Result hierarchy: HVR.Vixxy container under the avatar, with one child per migrated parameter](docs/images/10-result-hierarchy.png)
-<!-- IMAGE NEEDED: Hierarchy panel showing the avatar root expanded with the HVR.Vixxy GameObject expanded underneath. Show several children: Toggles_Jacket_Main, Cosmetics_Eye_Hue, Settings_Brightness, etc. Capture enough children to make the flat-hierarchy + path-encoded-name pattern obvious. -->
+<img width="344" height="579" alt="{44AE85C3-3A5E-4891-B0FC-B371F87D9244}" src="https://github.com/user-attachments/assets/eaace6da-f209-483d-b9d8-97f826eb58df" />
+
 
 ### Step 8 — Adjust per-item presentation *(optional)*
 
@@ -135,15 +135,15 @@ The tool authors every control with neutral defaults: `presentation = Default` a
 
 For continuous controls (hue, brightness, etc.), select the GameObject and switch **Presentation** to **Slider** in the `HVRVixxyMenuItem` Inspector. Binary toggles can stay on **Default** — the menu UI renders 2-choice 0/1 controls as switches automatically. To add labelled choices ("Off"/"On", "Hidden"/"Visible", etc.), set **Title Selection** to **UseCustomTitleAndChoices** and edit the per-choice titles on the `HVRVixxyControl`.
 
-![Per-item adjustment: switch Presentation to Slider for continuous controls](docs/images/11-presentation-override.png)
-<!-- IMAGE NEEDED: Inspector showing one of the migrated GameObjects with the HVRVixxyMenuItem component visible, the Presentation dropdown opened to reveal the Default and Slider options. Highlight or otherwise indicate the Slider option. -->
+<img width="496" height="788" alt="{BF156E47-4CA1-4985-8B1E-58022F77DE11}" src="https://github.com/user-attachments/assets/225c9897-df60-449c-be6c-aa9a7c0b6c97" />
+
 
 ### Step 9 — Test in Play mode
 
 Enter Play mode (or Basis's local-test flow). Open the avatar customization menu and verify each migrated control behaves as expected.
 
-![Migrated controls active in the in-game avatar customization menu](docs/images/12-in-game-menu.png)
-<!-- IMAGE NEEDED: Basis avatar customization menu in-game showing the migrated controls being interacted with — at least one toggle (e.g. Jacket Main) and one slider (e.g. Eye Hue or Brightness) visible. Mid-interaction is more useful than a static screenshot. -->
+<img width="998" height="668" alt="{8214A1E5-0EA6-41FF-B48E-4E3BB8A1C8F1}" src="https://github.com/user-attachments/assets/e93f6ed5-5e8b-46ce-9f00-d7383ab4deb5" />
+
 
 ## Output shape
 
