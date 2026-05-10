@@ -1,0 +1,13 @@
+{
+  "name": "net.towneh.editor.vixxymigration",
+  "displayName": "Vixxy Animator Migration Utility",
+  "version": "0.0.1",
+  "description": "Editor tool for Basis avatars: migrates animator-driven toggles, cosmetic sliders, and settings into networked HVR Vixxy controls. Drop an avatar into the window, tick the parameters to migrate, and the tool authors the matching HVRVixxyControl + HVRVixxyMenuItem hierarchy.",
+  "author": {
+    "name": "towneh",
+    "url": "https://github.com/towneh"
+  },
+  "vpmDependencies": {
+    "dev.hai-vr.basis.comms": "0.0.1"
+  }
+}

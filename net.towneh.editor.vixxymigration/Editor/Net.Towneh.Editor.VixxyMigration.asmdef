@@ -1,0 +1,19 @@
+{
+    "name": "Net.Towneh.Editor.VixxyMigration",
+    "rootNamespace": "Net.Towneh.Editor.VixxyMigration",
+    "references": [
+        "HVR.Basis.Comms",
+        "BasisDebug"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
