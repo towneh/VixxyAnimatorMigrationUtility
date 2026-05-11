@@ -40,7 +40,7 @@ The orchestrator and address fields are left blank; Vixxy resolves both at runti
 The tool intentionally does not migrate:
 
 - Internal animator drivers (`IsLoaded`, `IsLocal`).
-- Gesture-driven parameters (`GestureLeft`, `GestureRight`, `EyeTracking`, `_Boop`, `_PatPat`, etc.).
+- Gesture-driven parameters (`GestureLeft`, `GestureRight`, `EyeTracking`, etc.).
 - Sub-state-machines.
 - Animator-state speed parameters (no Vixxy equivalent).
 - Multi-state interconnected clothing logic.
