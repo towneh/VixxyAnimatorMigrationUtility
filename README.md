@@ -174,10 +174,10 @@ The `orchestrator` and `address` fields on each control are left blank — Vixxy
 
 ## Limitations
 
-- Animator-state speed parameters (e.g. `Settings/Idles/Tail Wag Speed`) are skipped. Vixxy has no equivalent surface for runtime animation speed control.
+- Animator-state speed parameters are skipped. Vixxy has no equivalent surface for runtime animation speed control.
 - Sub-state-machine transitions and gesture-driven layers (`GestureLeft`, `GestureRight`, `EyeTracking`, etc.) are skipped.
-- Multi-state NSFW logic (e.g. `Toggles/Extras/*` interconnected clothing states) is skipped — author manually if needed.
-- 5-step blend trees (e.g. the `Settings/Brightness` 5-point variant) collapse to a 2-choice control mapping endpoint to endpoint. Intermediate-clip side effects are lost in the simplification.
+- Multi-state logic (e.g. interconnected clothing states) is skipped — author manually if needed.
+- 5-step blend trees collapse to a 2-choice control mapping endpoint to endpoint. Intermediate-clip side effects are lost in the simplification.
 - The tool does not verify Poi material lock state. If materials are unlocked when the tool runs, the suffixed property writes will silently no-op at runtime.
 
 ## Acknowledgments
