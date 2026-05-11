@@ -39,11 +39,11 @@ The orchestrator and address fields are left blank; Vixxy resolves both at runti
 
 The tool intentionally does not migrate:
 
-- Internal animator drivers (`_DBTNormalize`, `IsLoaded`, `IsLocal`).
+- Internal animator drivers (`IsLoaded`, `IsLocal`).
 - Gesture-driven parameters (`GestureLeft`, `GestureRight`, `EyeTracking`, `_Boop`, `_PatPat`, etc.).
-- Sub-state-machines under `Settings/Idles/`, `Settings/Gestures`, `Settings/Contacts`, `Settings/EyeSqueeze`, `Settings/Respectfully`.
+- Sub-state-machines.
 - Animator-state speed parameters (no Vixxy equivalent).
-- Multi-state interconnected clothing logic (`Toggles/Extras/*`).
+- Multi-state interconnected clothing logic.
 
 These appear in the **Skipped** foldout with a per-item reason; author them manually if needed.
 
